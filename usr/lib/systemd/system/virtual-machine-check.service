@@ -1,6 +1,6 @@
 [Unit]
 Description=checks if installed on virtual machine or not
-After=multi-user.target display-manager.service
+After=multi-user.target display-manager.service pacman-init.service
 
 [Service]
 Type=oneshot
