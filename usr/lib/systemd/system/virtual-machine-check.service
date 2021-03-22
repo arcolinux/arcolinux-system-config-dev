@@ -5,6 +5,7 @@ After=multi-user.target display-manager.service pacman-init.service
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/arcolinux-virtual-machine-check
+TimeoutSec=900
 
 [Install]
 WantedBy=multi-user.target
