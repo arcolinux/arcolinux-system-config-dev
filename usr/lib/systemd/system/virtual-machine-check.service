@@ -1,10 +1,10 @@
 [Unit]
 Description=checks if installed on virtual machine or not
-After=multi-user.target display-manager.service pacman-init.service
+After=default.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/arcolinux-virtual-machine-check
+ExecStart=timeout 20 /usr/local/bin/arcolinux-virtual-machine-check
 TimeoutSec=900
 
 [Install]
