@@ -10,4 +10,4 @@ Target = nvidia*
 [Action]
 Description = Checking for linux,systemd or nvidia changes...
 When = PostTransaction
-Exec = /usr/bin/notify-send -u critical -i software-update-urgent "ArcoLinux message" "Important Linux packages have changed. \n Reboot is recommended."
+Exec = /usr/bin/notify-send -u critical -i software-update-urgent "ArcoLinux message" "Important Linux packages have changed.\nReboot is recommended."
