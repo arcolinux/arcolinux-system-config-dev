@@ -28,6 +28,33 @@ if [ $result = "oracle" ];
 		if pacman -Qi open-vm-tools &> /dev/null; then
 			pacman -Rns open-vm-tools --noconfirm
 		fi
+
+		#remove qemu
+		if pacman -Qi qemu-guest-agent &> /dev/null; then
+			systemctl disable qemu-guest-agent.service
+			pacman -Rns qemu-guest-agent --noconfirm
+		fi
+fi
+
+if [ $result = "kvm" ];
+	then
+		#remove vmware
+		if [ -f /etc/xdg/autostart/vmware-user.desktop ]; then
+   		rm /etc/xdg/autostart/vmware-user.desktop
+		fi
+
+		if pacman -Qi open-vm-tools &> /dev/null; then
+			pacman -Rns open-vm-tools --noconfirm
+		fi
+
+		#remove virtualbox
+		if [ -f /etc/xdg/autostart/vboxclient.desktop ]; then
+   		rm /etc/xdg/autostart/vboxclient.desktop
+		fi
+
+		if pacman -Qi virtualbox-guest-utils &> /dev/null; then
+			pacman -Rns virtualbox-guest-utils --noconfirm
+		fi
 fi
 
 if [ $result = "none" ];
@@ -47,6 +74,12 @@ if [ $result = "none" ];
 
 		if pacman -Qi open-vm-tools &> /dev/null; then
 			pacman -Rns open-vm-tools --noconfirm
+		fi
+
+		#remove qemu
+		if pacman -Qi qemu-guest-agent &> /dev/null; then
+			systemctl disable qemu-guest-agent.service
+			pacman -Rns qemu-guest-agent --noconfirm
 		fi
 
 	  systemctl disable virtual-machine-check.service
