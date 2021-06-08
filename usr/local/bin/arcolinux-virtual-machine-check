@@ -61,6 +61,10 @@ if [ $result = "kvm" ];
 			pacman -Rns virtualbox-guest-utils --noconfirm
 			echo "Removed virtualbox-guest-utils"
 		fi
+		if pacman -Qi virtualbox-guest-utils-nox &> /dev/null; then
+			pacman -Rns virtualbox-guest-utils-nox --noconfirm
+			echo "Removed virtualbox-guest-utils-nox"
+		fi
 fi
 
 if [ $result = "none" ];
@@ -75,6 +79,12 @@ if [ $result = "none" ];
 			pacman -Rns virtualbox-guest-utils --noconfirm
 			echo "Removed virtualbox-guest-utils"
 		fi
+
+		if pacman -Qi virtualbox-guest-utils-nox &> /dev/null; then
+			pacman -Rns virtualbox-guest-utils-nox --noconfirm
+			echo "Removed virtualbox-guest-utils-nox"
+		fi
+
 		#remove vmware
 		if [ -f /etc/xdg/autostart/vmware-user.desktop ]; then
 	   		rm /etc/xdg/autostart/vmware-user.desktop
