@@ -17,6 +17,8 @@
 
 result=$(systemd-detect-virt)
 
+echo "You are working on "$result
+
 if [ $result = "oracle" ];
 	then
 		#remove vmware
@@ -65,6 +67,28 @@ if [ $result = "kvm" ];
 			systemctl disable vboxservice.service
 			pacman -Rns virtualbox-guest-utils-nox --noconfirm
 			echo "Removed virtualbox-guest-utils-nox"
+		fi
+fi
+
+if [ $result = "vmware" ];
+	then
+		#remove virtualbox
+		if pacman -Qi virtualbox-guest-utils &> /dev/null; then
+			systemctl disable vboxservice.service
+			pacman -Rns virtualbox-guest-utils --noconfirm
+			echo "Removed virtualbox-guest-utils"
+		fi
+		if pacman -Qi virtualbox-guest-utils-nox &> /dev/null; then
+			systemctl disable vboxservice.service
+			pacman -Rns virtualbox-guest-utils-nox --noconfirm
+			echo "Removed virtualbox-guest-utils-nox"
+		fi
+
+		#remove qemu
+		if pacman -Qi qemu-guest-agent &> /dev/null; then
+			systemctl disable qemu-guest-agent.service
+			pacman -Rns qemu-guest-agent --noconfirm
+			echo "Removed qemu-guest-agent"
 		fi
 fi
 
