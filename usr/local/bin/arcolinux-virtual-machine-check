@@ -26,6 +26,8 @@ if [ $result = "oracle" ];
 		fi
 
 		if pacman -Qi open-vm-tools &> /dev/null; then
+			systemctl disable vmtoolsd.service
+			echo "Disabled vmtoolsd.service"
 			pacman -Rns open-vm-tools --noconfirm
 			echo "Removed open-vm-tools"
 		fi
@@ -47,6 +49,8 @@ if [ $result = "kvm" ];
 		fi
 
 		if pacman -Qi open-vm-tools &> /dev/null; then
+			systemctl disable vmtoolsd.service
+			echo "Disabled vmtoolsd.service"
 			pacman -Rns open-vm-tools --noconfirm
 			echo "Removed open-vm-tools"
 		fi
@@ -86,6 +90,8 @@ if [ $result = "none" ];
 		fi
 
 		if pacman -Qi open-vm-tools &> /dev/null; then
+			systemctl disable vmtoolsd.service
+			echo "Disabled vmtoolsd.service"
 			pacman -Rns open-vm-tools --noconfirm
 			echo "Removed open-vm-tools"
 		fi
