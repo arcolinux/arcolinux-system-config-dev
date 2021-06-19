@@ -52,16 +52,13 @@ if [ $result = "kvm" ];
 		fi
 
 		#remove virtualbox
-		if [ -f /etc/xdg/autostart/vboxclient.desktop ]; then
-   			rm /etc/xdg/autostart/vboxclient.desktop
-			echo "Removed vboxclient.desktop"
-		fi
-
 		if pacman -Qi virtualbox-guest-utils &> /dev/null; then
+			systemctl disable vboxservice.service
 			pacman -Rns virtualbox-guest-utils --noconfirm
 			echo "Removed virtualbox-guest-utils"
 		fi
 		if pacman -Qi virtualbox-guest-utils-nox &> /dev/null; then
+			systemctl disable vboxservice.service
 			pacman -Rns virtualbox-guest-utils-nox --noconfirm
 			echo "Removed virtualbox-guest-utils-nox"
 		fi
@@ -70,17 +67,14 @@ fi
 if [ $result = "none" ];
 	then
 		#remove virtualbox
-		if [ -f /etc/xdg/autostart/vboxclient.desktop ]; then
-   			rm /etc/xdg/autostart/vboxclient.desktop
-			echo "Removed vboxclient.desktop"
-		fi
-
 		if pacman -Qi virtualbox-guest-utils &> /dev/null; then
+			systemctl disable vboxservice.service
 			pacman -Rns virtualbox-guest-utils --noconfirm
 			echo "Removed virtualbox-guest-utils"
 		fi
 
 		if pacman -Qi virtualbox-guest-utils-nox &> /dev/null; then
+			systemctl disable vboxservice.service
 			pacman -Rns virtualbox-guest-utils-nox --noconfirm
 			echo "Removed virtualbox-guest-utils-nox"
 		fi
