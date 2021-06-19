@@ -103,5 +103,5 @@ if [ $result = "none" ];
 			echo "Removed qemu-guest-agent"
 		fi
 
-	  systemctl disable virtual-machine-check.service
+	  #systemctl disable virtual-machine-check.service
 fi
