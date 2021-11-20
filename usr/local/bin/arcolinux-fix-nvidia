@@ -183,7 +183,7 @@ case $CHOICE in
 
     1 )
 		function_remove_all
-		for name in "${list$choice[@]}" ; do
+		for name in "${list1[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
@@ -191,7 +191,7 @@ case $CHOICE in
     ;;
     2 )
 		function_remove_all
-		for name in "${list$choice[@]}" ; do
+		for name in "${list2[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
@@ -199,7 +199,7 @@ case $CHOICE in
     ;;
     3 )
 		function_remove_all
-		for name in "${list$choice[@]}" ; do
+		for name in "${list3[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
@@ -207,7 +207,7 @@ case $CHOICE in
     ;;
     4 )
 		function_remove_all
-		for name in "${list$choice[@]}" ; do
+		for name in "${list4[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
@@ -215,7 +215,7 @@ case $CHOICE in
     ;;
     5 )
 		function_remove_all
-		for name in "${list$choice[@]}" ; do
+		for name in "${list5[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
@@ -223,7 +223,7 @@ case $CHOICE in
     ;;
     6 )
 		function_remove_all
-		for name in "${list$choice[@]}" ; do
+		for name in "${list6[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
@@ -231,7 +231,7 @@ case $CHOICE in
     ;;
     7 )
 		function_remove_all
-		for name in "${list$choice[@]}" ; do
+		for name in "${list7[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
@@ -239,7 +239,7 @@ case $CHOICE in
     ;;
     8 )
 		function_remove_all
-		for name in "${list$choice[@]}" ; do
+		for name in "${list8[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
@@ -247,7 +247,7 @@ case $CHOICE in
     ;;
     9 )
 		function_remove_all
-		for name in "${list$choice[@]}" ; do
+		for name in "${list9[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
