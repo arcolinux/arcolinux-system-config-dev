@@ -198,15 +198,25 @@ nvidia-470xx-dkms
 function_remove_all() {
 function_remove_rs nvidia
 function_remove_rs nvidia-lts
-function_remove_rs nvidia-340xx
-function_remove_rs nvidia-390xx
-function_remove_rs nvidia-470xx
 function_remove_rs nvidia-settings
 function_remove_rs nvidia-utils
-function_remove_rs nvidia-prime
+
 function_remove_rs nvidia-dkms
+function_remove_rs nvidia-prime
 function_remove_rs nvidia-xrun
 function_remove_rs nvidia-cg-toolkit
+
+function_remove_rs nvidia-340xx-dkms
+function_remove_rs nvidia-340xx-settings
+function_remove_rs nvidia-340xx-utils
+
+function_remove_rs nvidia-390xx-dkms
+function_remove_rs nvidia-390xx-settings
+function_remove_rs nvidia-390xx-utils
+
+function_remove_rs nvidia-470xx-dkms
+function_remove_rs nvidia-470xx-settings
+function_remove_rs nvidia-470xx-utils
 }
 
 case $CHOICE in
