@@ -201,8 +201,8 @@ function_remove_rs nvidia-lts
 function_remove_rs nvidia-340xx
 function_remove_rs nvidia-390xx
 function_remove_rs nvidia-470xx
-function_remove_rs nvidia-utils
 function_remove_rs nvidia-settings
+function_remove_rs nvidia-utils
 function_remove_rs nvidia-prime
 function_remove_rs nvidia-dkms
 function_remove_rs nvidia-xrun
