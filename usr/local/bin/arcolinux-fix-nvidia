@@ -35,7 +35,47 @@ function_install() {
 	fi
 }
 
-function_remove() {
+function_build() {
+
+	paru -S $1 --noconfirm
+
+	# Just checking if installation was successful
+	if pacman -Qi $package &> /dev/null; then
+
+		echo "################################################################"
+		echo "#########  "$package" has been installed"
+		echo "################################################################"
+
+	else
+
+		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+		echo "!!!!!!!!!  "$package" has NOT been installed"
+		echo "!!!!!!!!!  Investigate why not"
+		echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+		exit 1
+	fi
+}
+
+function_remove_r() {
+  if pacman -Qi $1 &> /dev/null; then
+  		tput setaf 1
+  		echo "###############################################################################"
+  		echo "################## "$1" is installed and will be removed now."
+      echo "###############################################################################"
+      echo
+      tput sgr0
+      sudo pacman -R $1 --noconfirm
+  else
+    tput setaf 2
+    echo "###############################################################################"
+    echo "################## "$1" was not present or already removed."
+    echo "###############################################################################"
+    echo
+    tput sgr0
+  fi
+}
+
+function_remove_rs() {
   if pacman -Qi $1 &> /dev/null; then
   		tput setaf 1
   		echo "###############################################################################"
@@ -47,14 +87,14 @@ function_remove() {
   else
     tput setaf 2
     echo "###############################################################################"
-    echo "################## "$1" was not present or already removed."
+    echo "################## "$1" was already removed or was not present."
     echo "###############################################################################"
     echo
     tput sgr0
   fi
 }
 
-function_remove_dd() {
+function_remove_rdd() {
   if pacman -Qi $1 &> /dev/null; then
   		tput setaf 1
   		echo "###############################################################################"
@@ -72,8 +112,6 @@ function_remove_dd() {
     tput sgr0
   fi
 }
-
-
 
 echo
 tput setaf 1
@@ -158,17 +196,17 @@ nvidia-470xx-dkms
 )
 
 function_remove_all() {
-function_remove nvidia-utils
-function_remove nvidia-settings
-function_remove nvidia-prime
-function_remove nvidia-dkms
-function_remove nvidia-xrun
-function_remove nvidia-cg-toolkit
-function_remove nvidia
-function_remove nvidia-lts
-function_remove nvidia-340xx
-function_remove nvidia-390xx
-function_remove nvidia-470xx
+function_remove_rs nvidia
+function_remove_rs nvidia-lts
+function_remove_rs nvidia-340xx
+function_remove_rs nvidia-390xx
+function_remove_rs nvidia-470xx
+function_remove_rs nvidia-utils
+function_remove_rs nvidia-settings
+function_remove_rs nvidia-prime
+function_remove_rs nvidia-dkms
+function_remove_rs nvidia-xrun
+function_remove_rs nvidia-cg-toolkit
 }
 
 case $CHOICE in
@@ -234,7 +272,7 @@ case $CHOICE in
 		for name in "${list7[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-		function_install $name
+		function_build $name
 		done
     ;;
     8 )
@@ -242,7 +280,7 @@ case $CHOICE in
 		for name in "${list8[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-		function_install $name
+		function_build $name
 		done
     ;;
     9 )
@@ -250,7 +288,7 @@ case $CHOICE in
 		for name in "${list9[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
-		function_install $name
+		function_build $name
 		done
     ;;
     666 )
