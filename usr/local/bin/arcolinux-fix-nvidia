@@ -98,13 +98,63 @@ echo "6.  Install linux-hardened and nvidia-dkms"
 echo "7.  Build and install nvidia-340xx-dkms"
 echo "8.  Build and install nvidia-390xx-dkms"
 echo "9.  Build and install nvidia-470xx-dkms"
+echo "666. Remove any and all nvidia packages"
 echo "Type the number..."
 
 read CHOICE
 
 list1=(
+linux
 nvidia
+nvidia-settings
+nvidia-utils
+)
+
+list2=(
+linux-lts
+nvidia-lts
+nvidia-settings
+nvidia-utils
+)
+
+list3=(
+linux
 nvidia-dkms
+nvidia-settings
+nvidia-utils
+)
+
+list4=(
+linux-lts
+nvidia-dkms
+nvidia-settings
+nvidia-utils
+)
+
+list5=(
+linux-zen
+nvidia-dkms
+nvidia-settings
+nvidia-utils
+)
+
+list6=(
+linux-hardened
+nvidia-dkms
+nvidia-settings
+nvidia-utils
+)
+
+list7=(
+nvidia-340xx-dkms
+)
+
+list8=(
+nvidia-390xx-dkms
+)
+
+list9=(
+nvidia-470xx-dkms
 )
 
 function_remove_all() {
@@ -133,73 +183,84 @@ case $CHOICE in
 
     1 )
 		function_remove_all
-		for name in "${list1[@]}" ; do
+		for name in "${list$choice[@]}" ; do
 		count=$[count+1]
 		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
 		function_install $name
 		done
     ;;
     2 )
-			sudo pacman -S linux-lts --noconfirm
-			sudo pacman -S nvidia-lts --noconfirm
-
-			sudo pacman -S nvidia-utils --noconfirm
-			sudo pacman -S nvidia-settings --noconfirm
+		function_remove_all
+		for name in "${list$choice[@]}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+		function_install $name
+		done
     ;;
     3 )
-			sudo pacman -S linux-lts --noconfirm
-			sudo pacman -S nvidia-lts --noconfirm
-
-			sudo pacman -S nvidia-utils --noconfirm
-			sudo pacman -S nvidia-settings --noconfirm
-	;;
+		function_remove_all
+		for name in "${list$choice[@]}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+		function_install $name
+		done
+    ;;
     4 )
-			sudo pacman -S linux-lts --noconfirm
-			sudo pacman -S nvidia-lts --noconfirm
-
-			sudo pacman -S nvidia-utils --noconfirm
-			sudo pacman -S nvidia-settings --noconfirm
+		function_remove_all
+		for name in "${list$choice[@]}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+		function_install $name
+		done
     ;;
     5 )
-			sudo pacman -S linux-lts --noconfirm
-			sudo pacman -S nvidia-lts --noconfirm
-
-			sudo pacman -S nvidia-utils --noconfirm
-			sudo pacman -S nvidia-settings --noconfirm
+		function_remove_all
+		for name in "${list$choice[@]}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+		function_install $name
+		done
     ;;
     6 )
-			sudo pacman -S linux-lts --noconfirm
-			sudo pacman -S nvidia-lts --noconfirm
-
-			sudo pacman -S nvidia-utils --noconfirm
-			sudo pacman -S nvidia-settings --noconfirm
-      ;;
+		function_remove_all
+		for name in "${list$choice[@]}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+		function_install $name
+		done
+    ;;
     7 )
-			sudo pacman -S linux-lts --noconfirm
-			sudo pacman -S nvidia-lts --noconfirm
-
-			sudo pacman -S nvidia-utils --noconfirm
-			sudo pacman -S nvidia-settings --noconfirm
-      ;;
+		function_remove_all
+		for name in "${list$choice[@]}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+		function_install $name
+		done
+    ;;
     8 )
-			sudo pacman -S linux-lts --noconfirm
-			sudo pacman -S nvidia-lts --noconfirm
-
-			sudo pacman -S nvidia-utils --noconfirm
-			sudo pacman -S nvidia-settings --noconfirm
-      ;;
+		function_remove_all
+		for name in "${list$choice[@]}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+		function_install $name
+		done
+    ;;
     9 )
-			sudo pacman -S linux-lts --noconfirm
-			sudo pacman -S nvidia-lts --noconfirm
-
-			sudo pacman -S nvidia-utils --noconfirm
-			sudo pacman -S nvidia-settings --noconfirm
-      ;;
+		function_remove_all
+		for name in "${list$choice[@]}" ; do
+		count=$[count+1]
+		tput setaf 3;echo "Installing package nr.  "$count " " $name;tput sgr0;
+		function_install $name
+		done
+    ;;
+    666 )
+		function_remove_all
+    ;;
     * )
-      echo "#################################"
-      echo "Choose the correct number"
-      echo "#################################"
-      ;;
+    echo "#################################"
+    echo "Choose the correct number"
+    echo "#################################"
+    ;;
 esac
 
 echo "###############################################################################"
