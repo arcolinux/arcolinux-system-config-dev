@@ -19,8 +19,16 @@ Target = linux-main*
 Target = linux-dctxmei*
 Target = linux-froidzen*
 Target = linux-jwrdegoede*
+Target=nvidia
+Target=nvidia-lts
+Target=nvidia-dkms
+Target=nvidia-beta
+Target=nvidia-340xx*
+Target=nvidia-390xx*
+Target=nvidia-470xx*
 
 [Action]
 Description = ArcoLinux pacman hook to update-grub automatically
 When = PostTransaction
 Exec = /bin/sh -c "grub-mkconfig -o /boot/grub/grub.cfg"
+Exec= /bin/sh -c "/usr/bin/mkinitcpio -P"
