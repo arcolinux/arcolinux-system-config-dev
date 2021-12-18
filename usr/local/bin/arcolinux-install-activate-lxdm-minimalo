@@ -18,7 +18,7 @@ echo "##########################################################################
 echo "Install packages"
 echo "###############################################################################"
 
-sudo pacman -S  arcolinux-lxdm-theme-minimalo --noconfirm --needed
+sudo pacman -S  arcolinux-lxdm-theme-minimalo-git --noconfirm --needed
 
 echo "###############################################################################"
 echo "Change /etc/lxdm/lxdm.conf"
