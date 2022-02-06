@@ -7,4 +7,4 @@ Target = btrfs-assistant
 [Action]
 Description = ArcoLinux pacman hook for desktop files
 When = PostTransaction
-Exec = /usr/local/bin/arcolinux-desktop-files
+Exec = /usr/local/bin/arcolinux-fix-desktop-files
