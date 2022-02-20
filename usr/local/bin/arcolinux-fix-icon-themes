@@ -15,6 +15,13 @@
 #
 ###############################################################################
 
+
+if [ -d /usr/share/icons/Numix ]; then
+	FIND="Inherits=gnome,hicolor"
+	REPLACE="Inherits=Surfn,gnome,hicolor"
+	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Numix/index.theme
+fi
+
 if [ -d /usr/share/icons/Qogir ]; then
 	FIND="Inherits=hicolor"
 	REPLACE="Inherits=Surfn,hicolor"

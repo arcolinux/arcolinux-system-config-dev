@@ -4,6 +4,8 @@ Operation = Upgrade
 Type = Package
 Target = tela-circle-icon-theme-git
 Target = qogir-icon-theme
+Target = numix-icon-theme-git
+Target = numix-circle-icon-theme-git
 
 [Action]
 Description = ArcoLinux pacman hook for icon themes
