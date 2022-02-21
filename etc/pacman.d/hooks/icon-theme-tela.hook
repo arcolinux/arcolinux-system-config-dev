@@ -5,6 +5,6 @@ Type = Package
 Target = tela-circle-icon-theme-git
 
 [Action]
-Description = ArcoLinux pacman hook for icon themes
+Description = ArcoLinux pacman hook for icon theme Tela
 When = PostTransaction
 Exec = /usr/local/bin/arcolinux-fix-icon-theme-tela
