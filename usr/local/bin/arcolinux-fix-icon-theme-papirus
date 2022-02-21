@@ -34,7 +34,7 @@ if [ -d /usr/share/icons/Papirus ]; then
 
 	FIND="Inherits=elementary,hicolor"
 	REPLACE="Inherits=elementary,Surfn,hicolor"
-	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Papirus-Light/index.theme	
+	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/ePapirus-Dark/index.theme	
 
 	gtk-update-icon-cache -q /usr/share/icons/Papirus
 	gtk-update-icon-cache -q /usr/share/icons/Papirus-Light
