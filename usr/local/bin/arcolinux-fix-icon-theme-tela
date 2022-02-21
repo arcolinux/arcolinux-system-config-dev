@@ -16,23 +16,6 @@
 ###############################################################################
 
 
-if [ -d /usr/share/icons/Numix ]; then
-	FIND="Inherits=gnome,hicolor"
-	REPLACE="Inherits=Surfn,gnome,hicolor"
-	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Numix/index.theme
-fi
-
-if [ -d /usr/share/icons/Qogir ]; then
-	FIND="Inherits=hicolor"
-	REPLACE="Inherits=Surfn,hicolor"
-	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Qogir/index.theme
-	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Qogir-dark/index.theme
-	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Qogir-manjaro/index.theme
-	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Qogir-manjaro-dark/index.theme
-	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Qogir-ubuntu/index.theme
-	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Qogir-ubuntu-dark/index.theme
-fi
-
 if [ -d /usr/share/icons/Tela-circle ]; then
 	FIND="Inherits=hicolor"
 	REPLACE="Inherits=Surfn,hicolor"	
@@ -64,4 +47,34 @@ if [ -d /usr/share/icons/Tela-circle ]; then
 	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Tela-circle-ubuntu-dark/index.theme
 	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Tela-circle-yellow/index.theme
 	sudo sed -i "s/$FIND/$REPLACE/g" /usr/share/icons/Tela-circle-yellow-dark/index.theme
+
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-black
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-black-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-blue
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-blue-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-brown
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-brown-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-green
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-green-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-grey
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-grey-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-manjaro
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-manjaro-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-nord
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-nord-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-orange
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-orange-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-pink
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-pink-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-purple
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-purple-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-red
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-red-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-ubuntu
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-ubuntu-dark
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-yellow
+	gtk-update-icon-cache -q /usr/share/icons/Tela-circle-yellow-dark
+
 fi

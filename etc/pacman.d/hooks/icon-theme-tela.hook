@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = tela-circle-icon-theme-git
+
+[Action]
+Description = ArcoLinux pacman hook for icon themes
+When = PostTransaction
+Exec = /usr/local/bin/arcolinux-fix-icon-theme-tela
