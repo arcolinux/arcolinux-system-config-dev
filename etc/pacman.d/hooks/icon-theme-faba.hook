@@ -3,6 +3,7 @@ Operation = Install
 Operation = Upgrade
 Type = Package
 Target = faba-icon-theme-git
+Target = faba-mono-icons-git
 
 [Action]
 Description = ArcoLinux pacman hook for icon theme faba
