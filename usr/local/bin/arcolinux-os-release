@@ -25,7 +25,7 @@
 #tput setaf 7 = gray 
 #tput setaf 8 = light blue
 ##################################################################################################################
-echo "Changing logo to ArcoLinux"
+echo "Changing logo"
 if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
     sudo cp /usr/local/share/arcolinux/release/os-release-arco /usr/lib/os-release
     sudo cp /usr/local/share/arcolinux/release/os-release-arco /usr/lib/os-release-arcolinux
