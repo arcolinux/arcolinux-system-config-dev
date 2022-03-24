@@ -26,148 +26,26 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
-echo "Changing logo to Arch"
-echo
-echo '
-NAME="Arch Linux"
-PRETTY_NAME="Arch Linux"
-ID=arch
-BUILD_ID=rolling
-ANSI_COLOR="38;2;23;147;209"
-HOME_URL="https://archlinux.org/"
-DOCUMENTATION_URL="https://wiki.archlinux.org/"
-SUPPORT_URL="https://bbs.archlinux.org/"
-BUG_REPORT_URL="https://bugs.archlinux.org/"
-LOGO=archlinux-logo ' | sudo tee /usr/lib/os-release
+if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
+    echo "Changing logo to ArcoLinux"
+    sudo cp /usr/local/share/arcolinux/release/os-release-arco /usr/lib/os-release
+    sudo cp /usr/local/share/arcolinux/release/os-release-arco /usr/lib/os-release-arcolinux
+fi
 
-echo "Changing logo to Arch"
-echo
-echo '
-NAME="Arch Linux"
-PRETTY_NAME="Arch Linux"
-ID=arch
-BUILD_ID=rolling
-ANSI_COLOR="38;2;23;147;209"
-HOME_URL="https://archlinux.org/"
-DOCUMENTATION_URL="https://wiki.archlinux.org/"
-SUPPORT_URL="https://bbs.archlinux.org/"
-BUG_REPORT_URL="https://bugs.archlinux.org/"
-LOGO=archlinux-logo ' | sudo tee /usr/lib/os-release-arcolinux
+if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
+    echo "Changing logo to Arch"
+    sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release
+    sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release-arcolinux
 fi
 
 if [ -f /usr/local/bin/get-nemesis-on-aa ]; then
-echo "Changing logo to Arch"
-echo
-echo '
-NAME="Arch Linux"
-PRETTY_NAME="Arch Linux"
-ID=arch
-BUILD_ID=rolling
-ANSI_COLOR="38;2;23;147;209"
-HOME_URL="https://archlinux.org/"
-DOCUMENTATION_URL="https://wiki.archlinux.org/"
-SUPPORT_URL="https://bbs.archlinux.org/"
-BUG_REPORT_URL="https://bugs.archlinux.org/"
-LOGO=archlinux-logo ' | sudo tee /usr/lib/os-release
-
-echo "Changing logo to Arch"
-echo
-echo '
-NAME="Arch Linux"
-PRETTY_NAME="Arch Linux"
-ID=arch
-BUILD_ID=rolling
-ANSI_COLOR="38;2;23;147;209"
-HOME_URL="https://archlinux.org/"
-DOCUMENTATION_URL="https://wiki.archlinux.org/"
-SUPPORT_URL="https://bbs.archlinux.org/"
-BUG_REPORT_URL="https://bugs.archlinux.org/"
-LOGO=archlinux-logo ' | sudo tee /usr/lib/os-release-arcolinux
+    echo "Changing logo to Arch"
+    sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release
+    sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release-arcolinux
 fi
 
 if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
-echo "Changing logo to Arch"
-echo
-echo '
-NAME="Arch Linux"
-PRETTY_NAME="Arch Linux"
-ID=arch
-BUILD_ID=rolling
-ANSI_COLOR="38;2;23;147;209"
-HOME_URL="https://archlinux.org/"
-DOCUMENTATION_URL="https://wiki.archlinux.org/"
-SUPPORT_URL="https://bbs.archlinux.org/"
-BUG_REPORT_URL="https://bugs.archlinux.org/"
-LOGO=archlinux-logo ' | sudo tee /usr/lib/os-release
-
-echo "Changing logo to Arch"
-echo
-echo '
-NAME="Arch Linux"
-PRETTY_NAME="Arch Linux"
-ID=arch
-BUILD_ID=rolling
-ANSI_COLOR="38;2;23;147;209"
-HOME_URL="https://archlinux.org/"
-DOCUMENTATION_URL="https://wiki.archlinux.org/"
-SUPPORT_URL="https://bbs.archlinux.org/"
-BUG_REPORT_URL="https://bugs.archlinux.org/"
-LOGO=archlinux-logo ' | sudo tee /usr/lib/os-release-arcolinux
-fi
-
-if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
-echo "Changing logo to ArcoLinux"
-echo
-echo '
-NAME=ArcoLinux
-ID=arcolinux
-ID_LIKE=arch
-BUILD_ID=rolling
-ANSI_COLOR="0;36"
-HOME_URL="https://arcolinux.info/"
-SUPPORT_URL="https://arcolinuxforum.com/"
-BUG_REPORT_URL="https://github.com/arcolinux"
-LOGO=arcolinux-hello ' | sudo tee /usr/lib/os-release
-
-echo "Changing logo to ArcoLinux"
-echo
-echo '
-NAME=ArcoLinux
-ID=arcolinux
-ID_LIKE=arch
-BUILD_ID=rolling
-ANSI_COLOR="0;36"
-HOME_URL="https://arcolinux.info/"
-SUPPORT_URL="https://arcolinuxforum.com/"
-BUG_REPORT_URL="https://github.com/arcolinux"
-LOGO=arcolinux-hello ' | sudo tee /usr/lib/os-release-arcolinux
-fi
-
-if grep -q ArcoLinux /etc/dev-rel ; then
-echo "Changing logo to ArcoLinux"
-echo
-echo '
-NAME=ArcoLinux
-ID=arcolinux
-ID_LIKE=arch
-BUILD_ID=rolling
-ANSI_COLOR="0;36"
-HOME_URL="https://arcolinux.info/"
-SUPPORT_URL="https://arcolinuxforum.com/"
-BUG_REPORT_URL="https://github.com/arcolinux"
-LOGO=arcolinux-hello ' | sudo tee /usr/lib/os-release
-
-echo "Changing logo to ArcoLinux"
-echo
-echo '
-NAME=ArcoLinux
-ID=arcolinux
-ID_LIKE=arch
-BUILD_ID=rolling
-ANSI_COLOR="0;36"
-HOME_URL="https://arcolinux.info/"
-SUPPORT_URL="https://arcolinuxforum.com/"
-BUG_REPORT_URL="https://github.com/arcolinux"
-LOGO=arcolinux-hello ' | sudo tee /usr/lib/os-release-arcolinux
+    echo "Changing logo to Arch"
+    sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release
+    sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release-arcolinux
 fi

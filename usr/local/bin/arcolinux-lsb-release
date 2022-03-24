@@ -26,47 +26,22 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
+    echo "Changing logo to ArcoLinux"
+    sudo cp /usr/local/share/arcolinux/release/lsb-release-arco /etc/lsb-release
+fi
+
 if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
-echo "Changing logo to Arch"
-echo
-echo '
-DISTRIB_ID="Arch"
-DISTRIB_RELEASE="rolling"
-DISTRIB_DESCRIPTION="Arch Linux" ' | sudo tee /etc/lsb-release
+    echo "Changing logo to Arch"
+    sudo cp /usr/local/share/arcolinux/release/lsb-release-arch /etc/lsb-release
 fi
 
 if [ -f /usr/local/bin/get-nemesis-on-aa ]; then
-echo "Changing logo to Arch"
-echo
-echo '
-DISTRIB_ID="Arch"
-DISTRIB_RELEASE="rolling"
-DISTRIB_DESCRIPTION="Arch Linux" ' | sudo tee /etc/lsb-release
+    echo "Changing logo to Arch"
+    sudo cp /usr/local/share/arcolinux/release/lsb-release-arch /etc/lsb-release
 fi
 
 if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
-echo "Changing logo to Arch"
-echo
-echo '
-DISTRIB_ID="Arch"
-DISTRIB_RELEASE="rolling"
-DISTRIB_DESCRIPTION="Arch Linux" ' | sudo tee /etc/lsb-release
-fi
-
-if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
-echo "Changing logo to ArcoLinux"
-echo
-echo '
-DISTRIB_ID=ArcoLinux
-DISTRIB_RELEASE="rolling"
-DISTRIB_DESCRIPTION="ArcoLinux" ' | sudo tee /etc/lsb-release
-fi
-
-if  grep -q ArcoLinux /etc/dev-rel ; then
-echo "Changing logo to ArcoLinux"
-echo
-echo '
-DISTRIB_ID=ArcoLinux
-DISTRIB_RELEASE="rolling"
-DISTRIB_DESCRIPTION="ArcoLinux" ' | sudo tee /etc/lsb-release
+    echo "Changing logo to Arch"
+    sudo cp /usr/local/share/arcolinux/release/lsb-release-arch /etc/lsb-release
 fi
