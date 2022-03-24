@@ -25,27 +25,23 @@
 #tput setaf 7 = gray 
 #tput setaf 8 = light blue
 ##################################################################################################################
-
+echo "Changing logo to ArcoLinux"
 if [ -f /usr/local/bin/get-nemesis-on-arcolinux ]; then
-    echo "Changing logo to ArcoLinux"
     sudo cp /usr/local/share/arcolinux/release/os-release-arco /usr/lib/os-release
     sudo cp /usr/local/share/arcolinux/release/os-release-arco /usr/lib/os-release-arcolinux
 fi
 
 if [ -f /usr/local/bin/get-nemesis-on-carli ]; then
-    echo "Changing logo to Arch"
     sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release
     sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release-arcolinux
 fi
 
 if [ -f /usr/local/bin/get-nemesis-on-aa ]; then
-    echo "Changing logo to Arch"
     sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release
     sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release-arcolinux
 fi
 
 if [ -f /usr/local/bin/get-nemesis-on-alci ]; then
-    echo "Changing logo to Arch"
     sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release
     sudo cp /usr/local/share/arcolinux/release/os-release-arch /usr/lib/os-release-arcolinux
 fi
