@@ -19,6 +19,9 @@ git pull
 
 workdir=$(pwd)
 
+echo "getting mirrorlist ArchLinux"
+wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/pacman.d/mirrorlist -O $workdir/usr/local/share/arcolinux/pacman.d/mirrorlist
+
 echo "getting default grub file"
 wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/default/grub -O $workdir/usr/local/share/arcolinux/grub/grub
 
