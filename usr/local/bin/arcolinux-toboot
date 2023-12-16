@@ -70,6 +70,7 @@ if [ $file_boolean -eq 0 ] ; then
 		sudo sed -i "s/#console-mode keep/console-mode keep/g" /boot/efi/loader/loader.conf
 	fi
 fi
+
 echo
 echo "###############################################################################"
 echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
