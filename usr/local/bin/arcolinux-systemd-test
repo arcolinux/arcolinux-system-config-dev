@@ -26,9 +26,10 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-boot=$(bootctl is-installed)
+boot=$(bootctl status | grep Product | awk '{printf($2)}')
+echo "The system is using $boot to boot."
 
-# if systemd-boot is used then it is yes
-if [ ! $boot = "yes" ]; then
+# Only install grub when on grub
+if [ $boot = "GRUB" ]; then
 	/usr/bin/grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArcoLinux
 fi
