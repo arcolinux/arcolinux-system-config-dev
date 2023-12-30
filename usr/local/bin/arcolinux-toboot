@@ -56,5 +56,6 @@ else
 	echo "###############################################################################"
 	echo "###                YOU CAN NOT GOT TO SYSTEMD-BOOT                         ####"
 	echo "###                        KEEP USING GRUB                                 ####"
+	echo "###        https://wiki.archlinux.org/title/Arch_boot_process              ####"
 	echo "###############################################################################"
 fi
