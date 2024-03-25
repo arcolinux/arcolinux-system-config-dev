@@ -43,13 +43,6 @@ if lsblk | grep -q "/boot/efi" ; then
 	}
 
 	#GRUB GONE
-	if is_package_installed grub; then
-	    echo "Removing grub..."
-	    sudo pacman -R grub --noconfirm
-	else
-	    echo "Grub is not installed, no need to remove."
-	fi
-
 	if is_package_installed arcolinux-bootloader-grub-git; then
 	    echo "Removing arcolinux-bootloader-grub-git..."
 	    sudo pacman -R arcolinux-bootloader-grub-git --noconfirm
@@ -64,14 +57,15 @@ if lsblk | grep -q "/boot/efi" ; then
 	    echo "Arcolinux-grub-theme-vimix-git is not installed, no need to remove."
 	fi
 
-	#REFIND GONE
-	if is_package_installed refind; then
-	    echo "Removing refind..."
-	    sudo pacman -R refind --noconfirm
+	#keep last
+	if is_package_installed grub; then
+	    echo "Removing grub..."
+	    sudo pacman -R grub --noconfirm
 	else
-	    echo "Refind is not installed, no need to remove."
+	    echo "Grub is not installed, no need to remove."
 	fi
 
+	#REFIND GONE
 	if is_package_installed arcolinux-bootloader-refind-git; then
 	    echo "Removing arcolinux-bootloader-refind-git..."
 	    sudo pacman -R arcolinux-bootloader-refind-git --noconfirm
@@ -84,6 +78,14 @@ if lsblk | grep -q "/boot/efi" ; then
 	    sudo pacman -R arcolinux-refind-theme-arco-git --noconfirm
 	else
 	    echo "Arcolinux-refind-theme-arco-git is not installed, no need to remove."
+	fi
+
+	#keep last
+	if is_package_installed refind; then
+	    echo "Removing refind..."
+	    sudo pacman -R refind --noconfirm
+	else
+	    echo "Refind is not installed, no need to remove."
 	fi
 
 	echo "###############################################################################"

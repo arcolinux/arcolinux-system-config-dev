@@ -26,6 +26,10 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+echo "###############################################################################"
+echo "Removing other bootloaders"
+echo "###############################################################################"
+
 is_package_installed() {
     if pacman -Q "$1" &> /dev/null; then
         echo "Package $1 is installed."
@@ -36,11 +40,20 @@ is_package_installed() {
     fi
 }
 
+#SYSTEMD-BOOT GONE
 if is_package_installed kernel-install-mkinitcpio; then
     echo "Removing kernel-install-mkinitcpio..."
     sudo pacman -R kernel-install-mkinitcpio --noconfirm
 else
     echo "kernel-install-mkinitcpio is not installed, no need to remove."
+fi
+
+#REFIND GONE
+if is_package_installed arcolinux-bootloader-refind-git; then
+    echo "Removing arcolinux-bootloader-refind-git..."
+    sudo pacman -R arcolinux-bootloader-refind-git --noconfirm
+else
+    echo "Arcolinux-bootloader-refind-git is not installed, no need to remove."
 fi
 
 if is_package_installed arcolinux-refind-theme-arco-git; then
@@ -50,6 +63,7 @@ else
     echo "Arcolinux-refind-theme-arco-git is not installed, no need to remove."
 fi
 
+#keep last
 if is_package_installed refind; then
     echo "Removing refind..."
     sudo pacman -R refind --noconfirm

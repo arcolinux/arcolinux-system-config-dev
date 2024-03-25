@@ -26,11 +26,16 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-echo "###############################################################################"
-echo "Installing Refind for ArcoLinux"
-echo "###############################################################################"
-
 if lsblk | grep -q "/boot/efi" ; then
+
+	echo "###############################################################################"
+	echo "Installing Refind for ArcoLinux"
+	echo "###############################################################################"
+	echo
+	echo "###############################################################################"
+	echo "Removing other bootloaders"
+	echo "###############################################################################"
+	
 
 	is_package_installed() {
 	    if pacman -Q "$1" &> /dev/null; then
@@ -42,13 +47,7 @@ if lsblk | grep -q "/boot/efi" ; then
 	    fi
 	}
 
-	if is_package_installed grub; then
-	    echo "Removing grub..."
-	    sudo pacman -R grub --noconfirm
-	else
-	    echo "Grub is not installed, no need to remove."
-	fi
-
+	#GRUB GONE
 	if is_package_installed arcolinux-bootloader-grub-git; then
 	    echo "Removing arcolinux-bootloader-grub-git..."
 	    sudo pacman -R arcolinux-bootloader-grub-git --noconfirm
@@ -57,12 +56,21 @@ if lsblk | grep -q "/boot/efi" ; then
 	fi
 
 	if is_package_installed arcolinux-grub-theme-vimix-git; then
-	    echo "Removing arcolinux-bootloader-grub-git..."
+	    echo "Removing arcolinux-grub-theme-vimix-git..."
 	    sudo pacman -R arcolinux-grub-theme-vimix-git --noconfirm
 	else
 	    echo "Arcolinux-grub-theme-vimix-git is not installed, no need to remove."
 	fi
 
+	#keep last
+	if is_package_installed grub; then
+	    echo "Removing grub..."
+	    sudo pacman -R grub --noconfirm
+	else
+	    echo "Grub is not installed, no need to remove."
+	fi
+
+	#SYSTEMD-BOOT GONE
 	if is_package_installed kernel-install-mkinitcpio; then
 	    echo "Removing kernel-install-mkinitcpio..."
 	    sudo pacman -R kernel-install-mkinitcpio --noconfirm
@@ -73,6 +81,7 @@ if lsblk | grep -q "/boot/efi" ; then
 	sudo pacman -S --noconfirm refind
 	sudo refind-install
 	sudo pacman -S --noconfirm arcolinux-refind-theme-arco-git
+	sudo pacman -S --noconfirm arcolinux-bootloader-refind-git
 
 	echo
 	echo "###############################################################################"
