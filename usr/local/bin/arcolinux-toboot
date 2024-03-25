@@ -29,7 +29,65 @@
 if lsblk | grep -q "/boot/efi" ; then
 
 	echo "###############################################################################"
-	echo "Re-installing the default systemd-boot from ArcoLinux"
+	echo "Removing other bootloaders"
+	echo "###############################################################################"
+	
+	is_package_installed() {
+	    if pacman -Q "$1" &> /dev/null; then
+	        echo "Package $1 is installed."
+	        return 0  # Success
+	    else
+	        echo "Package $1 is not installed."
+	        return 1  # Failure
+	    fi
+	}
+
+	#GRUB GONE
+	if is_package_installed grub; then
+	    echo "Removing grub..."
+	    sudo pacman -R grub --noconfirm
+	else
+	    echo "Grub is not installed, no need to remove."
+	fi
+
+	if is_package_installed arcolinux-bootloader-grub-git; then
+	    echo "Removing arcolinux-bootloader-grub-git..."
+	    sudo pacman -R arcolinux-bootloader-grub-git --noconfirm
+	else
+	    echo "Arcolinux-bootloader-grub-git is not installed, no need to remove."
+	fi
+
+	if is_package_installed arcolinux-grub-theme-vimix-git; then
+	    echo "Removing arcolinux-grub-theme-vimix-git..."
+	    sudo pacman -R arcolinux-grub-theme-vimix-git --noconfirm
+	else
+	    echo "Arcolinux-grub-theme-vimix-git is not installed, no need to remove."
+	fi
+
+	#REFIND GONE
+	if is_package_installed refind; then
+	    echo "Removing refind..."
+	    sudo pacman -R refind --noconfirm
+	else
+	    echo "Refind is not installed, no need to remove."
+	fi
+
+	if is_package_installed arcolinux-bootloader-refind-git; then
+	    echo "Removing arcolinux-bootloader-refind-git..."
+	    sudo pacman -R arcolinux-bootloader-refind-git --noconfirm
+	else
+	    echo "Arcolinux-bootloader-refind-git is not installed, no need to remove."
+	fi
+
+	if is_package_installed arcolinux-refind-theme-arco-git; then
+	    echo "Removing arcolinux-refind-theme-arco-git..."
+	    sudo pacman -R arcolinux-refind-theme-arco-git --noconfirm
+	else
+	    echo "Arcolinux-refind-theme-arco-git is not installed, no need to remove."
+	fi
+
+	echo "###############################################################################"
+	echo "Installing the default systemd-boot from ArcoLinux"
 	echo "###############################################################################"
 
 	sudo pacman -S --noconfirm kernel-install-mkinitcpio
@@ -54,7 +112,7 @@ else
 
 	echo
 	echo "###############################################################################"
-	echo "###                YOU CAN NOT GOT TO SYSTEMD-BOOT                         ####"
+	echo "###                YOU CAN NOT USE SYSTEMD-BOOT                         ####"
 	echo "###                        KEEP USING GRUB                                 ####"
 	echo "###        https://wiki.archlinux.org/title/Arch_boot_process              ####"
 	echo "###############################################################################"

@@ -26,6 +26,37 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+is_package_installed() {
+    if pacman -Q "$1" &> /dev/null; then
+        echo "Package $1 is installed."
+        return 0  # Success
+    else
+        echo "Package $1 is not installed."
+        return 1  # Failure
+    fi
+}
+
+if is_package_installed kernel-install-mkinitcpio; then
+    echo "Removing kernel-install-mkinitcpio..."
+    sudo pacman -R kernel-install-mkinitcpio --noconfirm
+else
+    echo "kernel-install-mkinitcpio is not installed, no need to remove."
+fi
+
+if is_package_installed arcolinux-refind-theme-arco-git; then
+    echo "Removing arcolinux-refind-theme-arco-git..."
+    sudo pacman -R arcolinux-refind-theme-arco-git --noconfirm
+else
+    echo "Arcolinux-refind-theme-arco-git is not installed, no need to remove."
+fi
+
+if is_package_installed refind; then
+    echo "Removing refind..."
+    sudo pacman -R refind --noconfirm
+else
+    echo "Refind is not installed, no need to remove."
+fi
+
 echo "###############################################################################"
 echo "Reinstalling the default grub for ArcoLinux"
 echo "###############################################################################"
@@ -83,8 +114,6 @@ if [ $Online -eq 0 ]  && [ $file_boolean -eq 0 ] ; then
 	echo "Run this script once you are back online"
 fi
 
-# removing this package intended for use with systemd-boot
-sudo pacman -R --noconfirm kernel-install-mkinitcpio
 
 echo
 echo "###############################################################################"
@@ -96,6 +125,7 @@ echo
 
 sudo pacman -S grub --noconfirm
 sudo pacman -S arcolinux-grub-theme-vimix-git --noconfirm
+sudo pacman -S arcolinux-bootloader-grub-git --noconfirm
 
 sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArcoLinux
 

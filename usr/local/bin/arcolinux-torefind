@@ -30,50 +30,61 @@ echo "##########################################################################
 echo "Installing Refind for ArcoLinux"
 echo "###############################################################################"
 
+if lsblk | grep -q "/boot/efi" ; then
 
-is_package_installed() {
-    if pacman -Q "$1" &> /dev/null; then
-        echo "Package $1 is installed."
-        return 0  # Success
-    else
-        echo "Package $1 is not installed."
-        return 1  # Failure
-    fi
-}
+	is_package_installed() {
+	    if pacman -Q "$1" &> /dev/null; then
+	        echo "Package $1 is installed."
+	        return 0  # Success
+	    else
+	        echo "Package $1 is not installed."
+	        return 1  # Failure
+	    fi
+	}
 
-if is_package_installed grub; then
-    echo "Removing grub..."
-    sudo pacman -R grub --noconfirm
+	if is_package_installed grub; then
+	    echo "Removing grub..."
+	    sudo pacman -R grub --noconfirm
+	else
+	    echo "Grub is not installed, no need to remove."
+	fi
+
+	if is_package_installed arcolinux-bootloader-grub-git; then
+	    echo "Removing arcolinux-bootloader-grub-git..."
+	    sudo pacman -R arcolinux-bootloader-grub-git --noconfirm
+	else
+	    echo "Arcolinux-bootloader-grub-git is not installed, no need to remove."
+	fi
+
+	if is_package_installed arcolinux-grub-theme-vimix-git; then
+	    echo "Removing arcolinux-bootloader-grub-git..."
+	    sudo pacman -R arcolinux-grub-theme-vimix-git --noconfirm
+	else
+	    echo "Arcolinux-grub-theme-vimix-git is not installed, no need to remove."
+	fi
+
+	if is_package_installed kernel-install-mkinitcpio; then
+	    echo "Removing kernel-install-mkinitcpio..."
+	    sudo pacman -R kernel-install-mkinitcpio --noconfirm
+	else
+	    echo "Kernel-install-mkinitcpio is not installed, no need to remove."
+	fi
+
+	sudo pacman -S --noconfirm refind
+	sudo refind-install
+	sudo pacman -S --noconfirm arcolinux-refind-theme-arco-git
+
+	echo
+	echo "###############################################################################"
+	echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
+	echo "###############################################################################"
+
 else
-    echo "Grub is not installed, no need to remove."
+
+	echo
+	echo "###############################################################################"
+	echo "###                YOU CAN NOT USE SYSTEMD-BOOT                         ####"
+	echo "###                        KEEP USING GRUB                                 ####"
+	echo "###        https://wiki.archlinux.org/title/Arch_boot_process              ####"
+	echo "###############################################################################"
 fi
-
-if is_package_installed arcolinux-bootloader-grub-git; then
-    echo "Removing arcolinux-bootloader-grub-git..."
-    sudo pacman -R arcolinux-bootloader-grub-git --noconfirm
-else
-    echo "Arcolinux-bootloader-grub-git is not installed, no need to remove."
-fi
-
-if is_package_installed arcolinux-grub-theme-vimix-git; then
-    echo "Removing arcolinux-bootloader-grub-git..."
-    sudo pacman -R arcolinux-grub-theme-vimix-git --noconfirm
-else
-    echo "Arcolinux-grub-theme-vimix-git is not installed, no need to remove."
-fi
-
-if is_package_installed kernel-install-mkinitcpio; then
-    echo "Removing kernel-install-mkinitcpio..."
-    sudo pacman -R kernel-install-mkinitcpio --noconfirm
-else
-    echo "Kernel-install-mkinitcpio is not installed, no need to remove."
-fi
-
-sudo pacman -S --noconfirm refind
-sudo refind-install
-sudo pacman -S --noconfirm arcolinux-refind-theme-arco-git
-
-echo
-echo "###############################################################################"
-echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
-echo "###############################################################################"
