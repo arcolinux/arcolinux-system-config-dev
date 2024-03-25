@@ -95,6 +95,7 @@ echo "##########################################################################
 echo
 
 sudo pacman -S grub --noconfirm
+sudo pacman -S arcolinux-grub-theme-vimix-git --noconfirm
 
 sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArcoLinux
 
