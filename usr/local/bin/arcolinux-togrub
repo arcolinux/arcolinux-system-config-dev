@@ -27,18 +27,21 @@
 ##################################################################################################################
 
 # Disclaimer message
+tput setaf 3;
 echo "DISCLAIMER:"
-echo "This script assists in changing the boot manager from GRUB to either systemd-boot or rEFInd."
-echo "Modifying your system's boot manager and configurations can be hazardous and may result in a"
-echo "non-bootable system if not executed correctly."
+echo "This script assists in changing the boot manager from GRUB to"
+echo "either systemd-boot or rEFInd."
+echo "Modifying your system's boot manager and configurations can be"
+echo "hazardous and may result in a non-bootable system if not"
+echo "executed correctly."
 echo
-echo "It is strongly recommended to have a full system backup and a live USB available for system repair"
-echo "in case of any issues."
+echo "It is strongly recommended to have a full system backup and"
+echo "a live USB available for system repair in case of any issues."
 echo
-echo "Do you wish to continue? (Y/N)"
+echo "Do you wish to continue?"
 
 # User confirmation
-read -r -p "Please confirm [Y/N]: " response
+read -r -p "Please confirm with [Y/N]: " response
 case "$response" in
     [yY][eE][sS]|[yY]) 
         echo "Proceeding with the boot manager change..."
@@ -48,6 +51,7 @@ case "$response" in
         exit 1
         ;;
 esac
+tput sgr0
 
 Online=0
 
