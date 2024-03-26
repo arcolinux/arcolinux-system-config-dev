@@ -122,7 +122,7 @@ if lsblk | grep -q "/boot/efi" ; then
 
 	sudo bootctl clean
 	sudo bootctl install
-	sudo pacman -S $(uname -s | tr '[:upper:]' '[:lower:]')
+	sudo pacman -S $(uname -s | tr '[:upper:]' '[:lower:]') --noconfirm
 
 	if [[ -f /boot/efi/loader/loader.conf ]];then
 		sudo sed -i "s/#timeout 3/timeout 3/g" /boot/efi/loader/loader.conf
