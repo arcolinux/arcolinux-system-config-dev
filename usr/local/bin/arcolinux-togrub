@@ -214,6 +214,15 @@ if [ $Online -eq 0 ]  && [ $file_boolean -eq 0 ] ; then
 	echo "Run this script once you are back online"
 fi
 
+#failsafe does not exist
+if [ ! -f /etc/default/grub ]; then
+    sudo cp /usr/local/share/arcolinux/grub/grub /etc/default/grub
+fi  
+
+#failsafe empty
+if [ ! -s /etc/default/grub ]; then
+    sudo cp /usr/local/share/arcolinux/grub/grub /etc/default/grub
+fi  
 
 echo
 echo "###############################################################################"
