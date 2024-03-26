@@ -209,6 +209,12 @@ if [ $Online -eq 0 ] && [ $file_boolean -eq 1 ] ; then
 	echo "getting latest /etc/default/grub from local system"
 fi
 
+# pacman config + from local
+if [ $file_boolean -eq 1 ] ; then
+    sudo cp /usr/local/share/arcolinux/grub/grub /etc/default/grub
+    echo "getting latest /etc/default/grub from local system"
+fi
+
 #putting old pacman config back
 if [ $Online -eq 0 ]  && [ $file_boolean -eq 0 ] ; then
 	echo "Run this script once you are back online"
