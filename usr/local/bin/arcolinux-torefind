@@ -28,6 +28,38 @@
 
 if lsblk | grep -q "/boot/efi" ; then
 
+	Online=0
+
+	function check_connectivity() {
+
+	    local test_ip
+	    local test_count
+
+	    test_ip="8.8.8.8"
+	    test_count=1
+
+	    if ping -c ${test_count} ${test_ip} > /dev/null; then
+	       echo "You have internet connectivity"
+	       Online=1
+	    else
+	       echo "You do not have internet connectivity"
+	       Online=0
+	    fi
+	 }
+
+	check_connectivity
+
+	# if not online
+	if [ $Online -eq 0 ] ; then
+		echo
+		echo "###############################################################################"
+		echo "###                          YOU ARE NOT ONLINE                            ####"
+		echo "###         WE ARE PINGING 8.8.8.8 TO TEST YOUR INTERNET CONNECTION        ####"
+		echo "###           WE NEED INTERNET CONNECTION TO REINSTALL YOUR KERNEL         ####"
+		echo "###############################################################################"
+		exit 1
+	fi
+
 	echo "###############################################################################"
 	echo "Installing Refind for ArcoLinux"
 	echo "###############################################################################"

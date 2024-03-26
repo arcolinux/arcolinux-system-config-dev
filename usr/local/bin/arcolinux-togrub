@@ -26,6 +26,28 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+Online=0
+
+function check_connectivity() {
+
+    local test_ip
+    local test_count
+
+    test_ip="8.8.8.8"
+    test_count=1
+
+    if ping -c ${test_count} ${test_ip} > /dev/null; then
+       echo "You have internet connectivity"
+       Online=1
+    else
+       echo "You do not have internet connectivity"
+       Online=0
+    fi
+ }
+
+check_connectivity
+
+
 echo "###############################################################################"
 echo "Removing other bootloaders"
 echo "###############################################################################"
