@@ -47,6 +47,17 @@ function check_connectivity() {
 
 check_connectivity
 
+# if not online
+if [ $Online -eq 0 ] ; then
+    echo
+    echo "###############################################################################"
+    echo "###                          YOU ARE NOT ONLINE                            ####"
+    echo "###         WE ARE PINGING 8.8.8.8 TO TEST YOUR INTERNET CONNECTION        ####"
+    echo "###                        WE NEED INTERNET CONNECTION                     ####"
+    echo "###############################################################################"
+    exit 1
+fi
+
 
 echo "###############################################################################"
 echo "Removing other bootloaders"

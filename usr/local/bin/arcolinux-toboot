@@ -55,7 +55,7 @@ if lsblk | grep -q "/boot/efi" ; then
 		echo "###############################################################################"
 		echo "###                          YOU ARE NOT ONLINE                            ####"
 		echo "###         WE ARE PINGING 8.8.8.8 TO TEST YOUR INTERNET CONNECTION        ####"
-		echo "###           WE NEED INTERNET CONNECTION TO REINSTALL YOUR KERNEL         ####"
+		echo "###                        WE NEED INTERNET CONNECTION                     ####"
 		echo "###############################################################################"
 		exit 1
 	fi
