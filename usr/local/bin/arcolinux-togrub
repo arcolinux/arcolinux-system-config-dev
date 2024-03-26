@@ -26,6 +26,29 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
+# Disclaimer message
+echo "DISCLAIMER:"
+echo "This script assists in changing the boot manager from GRUB to either systemd-boot or rEFInd."
+echo "Modifying your system's boot manager and configurations can be hazardous and may result in a"
+echo "non-bootable system if not executed correctly."
+echo
+echo "It is strongly recommended to have a full system backup and a live USB available for system repair"
+echo "in case of any issues."
+echo
+echo "Do you wish to continue? (Y/N)"
+
+# User confirmation
+read -r -p "Please confirm [Y/N]: " response
+case "$response" in
+    [yY][eE][sS]|[yY]) 
+        echo "Proceeding with the boot manager change..."
+        ;;
+    *)
+        echo "Operation cancelled by the user. Exiting script."
+        exit 1
+        ;;
+esac
+
 Online=0
 
 function check_connectivity() {
