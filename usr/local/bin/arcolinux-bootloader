@@ -74,7 +74,8 @@ check_bootloader() {
     if command -v refind-install &> /dev/null; then
         refind_count=$((refind_count+1))
     fi
-
+    tput setaf 2;
+    echo
     # Determine which bootloader is in use
     if (( grub_count > systemd_boot_count )) && (( grub_count > refind_count )); then
         echo "GRUB is the most likely bootloader in use."
@@ -85,6 +86,8 @@ check_bootloader() {
     else
         echo "Unable to determine the bootloader with certainty, or multiple bootloaders are detected."
     fi
+    echo
+    tput sgr0
 }
 
 check_bootloader
