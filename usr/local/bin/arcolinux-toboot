@@ -116,7 +116,7 @@ if lsblk | grep -q "/boot/efi" ; then
 	sudo pacman -S --noconfirm pacman-hook-kernel-install
 
 	sudo bootctl install
-	sudo reinstall-kernels
+	#sudo reinstall-kernels
 
 	if [[ -f /boot/efi/loader/loader.conf ]];then
 		sudo sed -i "s/#timeout 3/timeout 3/g" /boot/efi/loader/loader.conf
