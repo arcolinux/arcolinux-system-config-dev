@@ -37,6 +37,12 @@ check_bootloader() {
     if [ -d /boot/grub ]; then
         grub_count=$((grub_count+1))
     fi
+    if [ -f /boot/grub/grub.cfg ]; then
+        grub_count=$((grub_count+1))
+    fi
+    if bootctl status 2>&1 | grep -q "GRUB"; then
+    	 grub_count=$((grub_count+1))
+    fi
     if [ -f /etc/default/grub ]; then
         grub_count=$((grub_count+1))
     fi
