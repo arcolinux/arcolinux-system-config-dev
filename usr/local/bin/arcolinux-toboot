@@ -120,7 +120,7 @@ if lsblk | grep -q "/boot/efi" ; then
 	sudo pacman -S --noconfirm pacman-hook-kernel-install
 	sudo pacman -S --noconfirm arcolinux-bootloader-systemd-boot-git
 
-	sudo bootctl clean
+	#sudo bootctl clean
 	sudo bootctl install
 	sudo pacman -S $(uname -s | tr '[:upper:]' '[:lower:]') --noconfirm
 
