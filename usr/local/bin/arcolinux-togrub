@@ -198,10 +198,10 @@ check_file
 
 
 # pacman config + online
-if [ $Online -eq 1 ] ; then
-	echo "getting latest /etc/default/grub from github"
-	sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/default/grub -O $workdir/etc/default/grub
-fi
+#if [ $Online -eq 1 ] ; then
+#	echo "getting latest /etc/default/grub from github"
+#	sudo wget https://raw.githubusercontent.com/arcolinux/arcolinuxl-iso/master/archiso/airootfs/etc/default/grub -O $workdir/etc/default/grub
+#fi
 
 # pacman config + not online
 if [ $Online -eq 0 ] && [ $file_boolean -eq 1 ] ; then
