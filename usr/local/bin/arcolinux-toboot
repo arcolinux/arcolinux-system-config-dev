@@ -65,8 +65,13 @@ if lsblk | grep -q "/boot/efi" ; then
 	    echo "Grub is not installed, no need to remove."
 	fi
 
-	sudo rm -r /boot/grub
-	sudo rm /etc/default/grub
+	if [ -d /boot/grub ]; then
+		sudo rm -r /boot/grub
+	fi
+
+	if [ -f /etc/default/grub ]; then
+		sudo rm /etc/default/grub
+	fi
 
 	#REFIND GONE
 	if is_package_installed arcolinux-bootloader-refind-git; then
