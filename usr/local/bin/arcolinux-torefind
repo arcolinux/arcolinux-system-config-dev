@@ -148,6 +148,18 @@ if lsblk | grep -q "/boot/efi" ; then
 	    echo "Arcolinux-bootloader-systemd-boot is not installed, no need to remove."
 	fi
 
+	if [ -d /boot/efi/EFI/systemd ]; then
+		sudo rm -r /boot/efi/EFI/systemd
+	fi
+
+	if [ -d /boot/efi/EFI/BOOT ]; then
+		sudo rm -r /boot/efi/EFI/BOOT
+	fi
+
+	if [ -d /boot/efi/EFI/ArcoLinux ]; then
+		sudo rm -r /boot/efi/EFI/ArcoLinux
+	fi
+
 	sudo pacman -S --noconfirm refind
 	sudo refind-install
 	sudo pacman -S --noconfirm arcolinux-refind-theme-arco-git
