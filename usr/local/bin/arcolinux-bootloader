@@ -45,7 +45,7 @@ if [ "$bootloader" = "systemd-boot" ]; then
     echo "The bootloader is systemd-boot."
     echo "We will install this package for you now"
     echo
-    sudo pacman -S arcolinux-bootloader-systemd-boot-git --noconfirm
+    alacritty -e 'pacman -S arcolinux-bootloader-systemd-boot-git --noconfirm'
     echo
     echo "It contains all the pacman hooks it needs."
     echo
@@ -53,7 +53,7 @@ elif [ "$bootloader" = "GRUB" ]; then
     echo "The bootloader is GRUB."
     echo "We will install this package for you now"
     echo
-    sudo pacman -S arcolinux-bootloader-grub-git --noconfirm
+    alacritty -e 'pacman -S arcolinux-bootloader-grub-git --noconfirm'
     echo
     echo "It contains all the pacman hooks it needs."
     echo
