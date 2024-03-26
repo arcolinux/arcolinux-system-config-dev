@@ -93,6 +93,13 @@ if lsblk | grep -q "/boot/efi" ; then
 	    echo "Pacman-hook-kernel-install is not installed, no need to remove."
 	fi
 
+	if is_package_installed arcolinux-bootloader-systemd-boot; then
+	    echo "Removing arcolinux-bootloader-systemd-boot..."
+	    sudo pacman -R arcolinux-bootloader-systemd-boot --noconfirm
+	else
+	    echo "Arcolinux-bootloader-systemd-boot is not installed, no need to remove."
+	fi
+
 	sudo pacman -S --noconfirm refind
 	sudo refind-install
 	sudo pacman -S --noconfirm arcolinux-refind-theme-arco-git
