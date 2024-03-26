@@ -86,8 +86,12 @@ if lsblk | grep -q "/boot/efi" ; then
 		sudo rm /etc/default/grub.pacsave
 	fi
 
-	if [ -f /etc/default/grub.pacsave1 ]; then
-		sudo rm /etc/default/grub.pacsave1
+	if [ -f /etc/default/grub.pacsave.1 ]; then
+		sudo rm /etc/default/grub.pacsave.1
+	fi
+
+	if [ -f /etc/default/grub.pacsave.2 ]; then
+		sudo rm /etc/default/grub.pacsave.2
 	fi
 
 	#SYSTEMD-BOOT GONE
