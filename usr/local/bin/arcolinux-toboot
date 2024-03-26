@@ -199,6 +199,14 @@ if lsblk | grep -q "/boot/efi" ; then
 	echo "Installing the default systemd-boot from ArcoLinux"
 	echo "###############################################################################"
 
+	#REFIND GONE
+	if is_package_installed kernel-install-mkinitcpio; then
+	    echo "Removing kernel-install-mkinitcpio..."
+	    sudo pacman -R kernel-install-mkinitcpio --noconfirm
+	else
+	    echo "Kernel-install-mkinitcpio is not installed, no need to remove."
+	fi
+
 	#sudo pacman -S --noconfirm kernel-install-mkinitcpio
 	sudo pacman -S --noconfirm pacman-hook-kernel-install
 	sudo pacman -S --noconfirm arcolinux-bootloader-systemd-boot-git
