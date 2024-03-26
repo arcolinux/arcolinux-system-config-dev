@@ -85,6 +85,18 @@ else
     echo "Refind is not installed, no need to remove."
 fi
 
+if [ -d /boot/efi/loader ]; then
+    sudo rm -r /boot/efi/loader
+fi
+
+if [ -d /boot/efi/EFI/refind ]; then
+    sudo rm -r /boot/efi/EFI/refind
+fi
+
+if [ -f /boot/refind_linux.conf ]; then
+    sudo rm /boot/refind_linux.conf
+fi
+
 echo "###############################################################################"
 echo "Reinstalling the default grub for ArcoLinux"
 echo "###############################################################################"
