@@ -48,6 +48,13 @@ else
     echo "kernel-install-mkinitcpio is not installed, no need to remove."
 fi
 
+if is_package_installed pacman-hook-kernel-install; then
+    echo "Removing pacman-hook-kernel-install..."
+    sudo pacman -R pacman-hook-kernel-install --noconfirm
+else
+    echo "Pacman-hook-kernel-install is not installed, no need to remove."
+fi
+
 #REFIND GONE
 if is_package_installed arcolinux-bootloader-refind-git; then
     echo "Removing arcolinux-bootloader-refind-git..."
