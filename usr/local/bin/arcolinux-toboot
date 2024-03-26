@@ -73,6 +73,18 @@ if lsblk | grep -q "/boot/efi" ; then
 		sudo rm /etc/default/grub
 	fi
 
+	if [ -f /etc/default/grub.pacnew ]; then
+		sudo rm /etc/default/grub.pacnew
+	fi
+
+	if [ -f /etc/default/grub.pacsave ]; then
+		sudo rm /etc/default/grub.pacsave
+	fi
+
+	if [ -f /etc/default/grub.pacsave1 ]; then
+		sudo rm /etc/default/grub.pacsave1
+	fi
+
 	#REFIND GONE
 	if is_package_installed arcolinux-bootloader-refind-git; then
 	    echo "Removing arcolinux-bootloader-refind-git..."
