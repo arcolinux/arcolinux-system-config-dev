@@ -246,7 +246,17 @@ if [[ $version_info == Linux* ]]; then
             sudo pacman -S linux-lts --noconfirm
         fi
         ;;
-      *linux-xanmod*)
+      *xanmod-lts*)
+        # Check if linux-xanmod-lts-headers is already installed
+        if pacman -Q linux-xanmod-lts-headers &> /dev/null; then
+            echo "'Linux-xanmod-lts-headers' is installed. Reinstalling 'linux-xanmod-lts-headers' along with 'linux-xanmod-lts'..."
+            sudo pacman -S linux-xanmod-lts linux-xanmod-lts-headers --noconfirm
+        else
+            echo "'linux-xanmod-lts-headers' is not installed. Installing 'linux-xanmod-lts'..."
+            sudo pacman -S linux-xanmod-lts --noconfirm
+        fi
+        ;;
+      *xanmod*)
         # Check if linux-xanmod-headers is already installed
         if pacman -Q linux-xanmod-headers &> /dev/null; then
             echo "'Linux-xanmod-headers' is installed. Reinstalling 'linux-xanmod-headers' along with 'linux-xanmod'..."
@@ -254,16 +264,6 @@ if [[ $version_info == Linux* ]]; then
         else
             echo "'linux-xanmod-headers' is not installed. Installing 'linux-xanmod'..."
             sudo pacman -S linux-xanmod --noconfirm
-        fi
-        ;;
-      *linux-rt*)
-        # Check if linux-linux-rt-headers is already installed
-        if pacman -Q linux-rt-headers &> /dev/null; then
-            echo "'Linux-rt-headers' is installed. Reinstalling 'linux-rt-headers' along with 'linux-rt'..."
-            sudo pacman -S linux-rt linux-rt-headers --noconfirm
-        else
-            echo "'linux-rt-headers' is not installed. Installing 'linux-rt'..."
-            sudo pacman -S linux-rt --noconfirm
         fi
         ;;
       *linux-rt-lts*)
@@ -276,6 +276,17 @@ if [[ $version_info == Linux* ]]; then
             sudo pacman -S linux-rt-lts --noconfirm
         fi
         ;;
+      *linux-rt*)
+        # Check if linux-linux-rt-headers is already installed
+        if pacman -Q linux-rt-headers &> /dev/null; then
+            echo "'Linux-rt-headers' is installed. Reinstalling 'linux-rt-headers' along with 'linux-rt'..."
+            sudo pacman -S linux-rt linux-rt-headers --noconfirm
+        else
+            echo "'linux-rt-headers' is not installed. Installing 'linux-rt'..."
+            sudo pacman -S linux-rt --noconfirm
+        fi
+        ;;
+
       *linux*)
         echo "Specific kernel version not detected, checking for standard Linux headers..."
         if pacman -Q linux-headers &> /dev/null; then
