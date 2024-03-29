@@ -76,13 +76,6 @@ case "$response" in
 esac
 tput sgr0
 
-
-#if [[ $version_info != *linux-zen* && $version_info != *linux-hardened* && $version_info != *linux-lts* && $version_info != *linux-rt* && $version_info != *linux-rt-lts* && $version_info != *linux-xanmod* ]]; then
-#    echo "The Linux version does not match 'zen', 'hardened', 'lts', 'rt', 'rt-lts', or 'xanmod'. Exiting script."
-#    exit 1
-#fi
-
-
 if lsblk | grep -q "/boot/efi" ; then
     echo "/boot/efi is mounted."
 
