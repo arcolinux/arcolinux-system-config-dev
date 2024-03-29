@@ -82,7 +82,9 @@ tput sgr0
 #    exit 1
 #fi
 
+
 if lsblk | grep -q "/boot/efi" ; then
+    echo "/boot/efi is mounted."
 
 	Online=0
 
@@ -246,7 +248,7 @@ if [[ $version_info == Linux* ]]; then
             sudo pacman -S linux-lts --noconfirm
         fi
         ;;
-      *xanmod-lts*)
+      *xanmod*lts*)
         # Check if linux-xanmod-lts-headers is already installed
         if pacman -Q linux-xanmod-lts-headers &> /dev/null; then
             echo "'Linux-xanmod-lts-headers' is installed. Reinstalling 'linux-xanmod-lts-headers' along with 'linux-xanmod-lts'..."
