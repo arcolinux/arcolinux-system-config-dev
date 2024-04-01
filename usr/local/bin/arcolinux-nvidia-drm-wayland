@@ -74,10 +74,6 @@ if [ -f /usr/share/wayland-sessions/hyprland.desktop ] || [ -f /usr/share/waylan
 		mv "${CONF_FILE}.tmp" "$CONF_FILE"
 		echo "Parameter '$PARAM' has been added to $CONF_FILE."
 
-
-
-
-
 	else
 		echo "##################################################"
 		echo "No nvidia-dkms present - nothing to do"
