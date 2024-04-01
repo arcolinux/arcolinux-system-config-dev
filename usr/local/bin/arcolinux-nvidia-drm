@@ -47,8 +47,6 @@ if pacman -Qi nvidia-dkms &> /dev/null; then
 	    else
 	        echo "'nvidia-drm.modeset=1' is already present in /boot/refind_linux.conf"
 	    fi
-	else
-	    echo "/boot/refind_linux.conf not found."
 	fi
 
 
