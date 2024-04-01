@@ -1,11 +1,5 @@
 #!/bin/bash
 
-echo
-echo "##################################################"
-echo "Start fix - systemd - nvidia - wayfire"
-echo "##################################################"
-echo
-
 # Just checking if nvidia-dkms is installed else stop
 if sudo pacman -Qi nvidia-dkms &> /dev/null; then
 
@@ -34,7 +28,7 @@ if sudo pacman -Qi nvidia-dkms &> /dev/null; then
 	echo
 	echo
 	echo "##################################################"
-	echo "End fix - systemd - nvidia - wayfire"
+	echo "End fix"
 	echo "##################################################"
 	echo
 
