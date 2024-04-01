@@ -7,7 +7,7 @@ echo "################################################################"
 echo
 
 # SYSTEMD-BOOT
-if -d /boot/efi/loader/entries/; then
+if [ -d /boot/efi/loader/entries/ ]; then
 	ENTRY_DIR="/boot/efi/loader/entries/"
 	PARAM="nvidia-drm.modeset=1"
 
