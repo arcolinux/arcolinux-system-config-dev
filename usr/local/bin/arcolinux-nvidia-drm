@@ -6,18 +6,19 @@ echo "################### Adding option nvidia-drm.modeset=1"
 echo "################################################################"
 echo
 
+# GRUB
 if [ -f /etc/default/grub ]; then
     # Check if 'nvidia-drm.modeset=1' is already in the GRUB_CMDLINE_LINUX_DEFAULT line
     if ! grep -q "nvidia-drm.modeset=1" /etc/default/grub; then
         # Use sed to append 'nvidia-drm.modeset=1' to the GRUB_CMDLINE_LINUX_DEFAULT line
         sudo sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ nvidia-drm.modeset=1\"/" /etc/default/grub
         echo "Added 'nvidia-drm.modeset=1' to GRUB_CMDLINE_LINUX_DEFAULT in /etc/default/grub"
+		grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArcoLinux
+		grub-mkconfig -o /boot/grub/grub.cfg
     else
         echo "'nvidia-drm.modeset=1' is already present in /etc/default/grub"
     fi
 fi
-
-
 
 # SYSTEMD-BOOT
 if [ -d /boot/efi/loader/entries/ ]; then
