@@ -29,7 +29,7 @@ if pacman -Qi nvidia-dkms &> /dev/null; then
 
 		for entry in "$ENTRY_DIR"*.conf; do
 	  	if sudo grep -q "nvidia-drm.modeset=1" "$entry"; then
-	    	echo "Parameter already present in $(basename "$entry")"
+	    	echo "'nvidia-drm.modeset=1' is already present in $(basename "$entry")"
 	  	else
 	    	sudo sed -i "/^options / s/options /&$PARAM /" "$entry"
 	    	echo "Added parameter to $(basename "$entry")"
