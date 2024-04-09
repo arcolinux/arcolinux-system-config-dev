@@ -43,7 +43,7 @@ packages=(arcolinux-alacritty-git arcolinux-arc-dawn-git arcolinux-desktop-trash
 		arcolinuxd-system-config-git arcolinuxd-system-config-dev-git arcolinux-systemd-services-git
 		arcolinux-wallpapers-git arcolinux-welcome-app-git arcolinux-welcome-app-dev-git
 		arconet-variety-config arcopro-wallpapers
-		bat bibata-cursor-theme-bin archlinux-tweak-tool-git duf downgrade edid-decode-git edu-surfn-numixs-blue-git
+		bat bibata-cursor-theme-bin archlinux-tweak-tool-git duf downgrade hw-probe edid-decode-git edu-surfn-numixs-blue-git
 		most sardi-icons sofirem-git surfn-icons-git the_silver_searcher variety vimix-cursors)
 
 echo "All these packages will be removed. Any configs in your home directory must be removed by you."
