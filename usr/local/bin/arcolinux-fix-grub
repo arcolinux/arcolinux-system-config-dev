@@ -83,6 +83,10 @@ if [ $Online -eq 0 ]  && [ $file_boolean -eq 0 ] ; then
 	echo "Run this script once you are back online"
 fi
 
+echo "Check if nvidia-drm.modeset is necessary"
+
+/usr/local/bin/arcolinux-nvidia-drm-wayland
+
 echo
 echo "###############################################################################"
 echo "###    Updating your /boot/grub/grub.cfg to apply the grub default file    ####"
