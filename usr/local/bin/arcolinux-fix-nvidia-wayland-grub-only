@@ -34,6 +34,23 @@ installed_dir=$(dirname $(readlink -f $(basename `pwd`)))
 # https://wiki.hyprland.org/Nvidia/
 # https://community.kde.org/Plasma/Wayland/Nvidia
 
+restart_with_sudo() {
+    tput setaf 3
+    echo
+    echo "This script needs to be run with superuser rights."
+    echo "Please restart the script with 'sudo' rights by typing:"
+    echo "sudo $0"
+    echo
+    tput sgr0
+    exit 1
+
+}
+
+# Check if running as root
+if [ "$(id -u)" -ne 0 ]; then
+    restart_with_sudo
+fi
+
 echo
 echo "################################################################"
 echo "################### Making sure nvidia-dkms is installed or else do nothing"
@@ -43,58 +60,64 @@ echo
 # Just checking if nvidia-dkms is installed else stop
 if pacman -Qi nvidia-dkms &> /dev/null; then
 
-	echo "################################################################"
-	echo "#########  Checking ..."$package" is installed... we can continue"
-	echo "################################################################"
+	if pacman -Qi grub &> /dev/null; then
 
-	echo
-	echo "################################################################"
-	echo "################### Adding nvidia modules for Wayland and Nvidia"
-	echo "################### MODULES= nvidia nvidia_modeset nvidia_uvm nvidia_drm"
-	echo "################### in /etc/mkinitcpio.conf"
-	echo "################### and rebuilding /boot files"
-	echo "################################################################"
-	echo
+		echo
+		echo "################################################################"
+		echo "################### Adding nvidia modules for Wayland and Nvidia"
+		echo "################### MODULES= nvidia nvidia_modeset nvidia_uvm nvidia_drm"
+		echo "################### in /etc/mkinitcpio.conf"
+		echo "################### and rebuilding /boot files"
+		echo "################################################################"
+		echo
 
-	FIND='MODULES=""'
-	REPLACE='MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"'
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
+		FIND='MODULES=""'
+		REPLACE='MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"'
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-	FIND='MODULES=()'
-	REPLACE='MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"'
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
+		FIND='MODULES=()'
+		REPLACE='MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"'
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/mkinitcpio.conf
 
-	echo
-	echo "################################################################"
-	echo "################### Adding option nvidia-drm.modeset=1"
-	echo "################### to /etc/default/grub"
-	echo "################################################################"
-	echo
+		echo
+		echo "################################################################"
+		echo "################### Adding option nvidia-drm.modeset=1"
+		echo "################### to /etc/default/grub"
+		echo "################################################################"
+		echo
 
 
-	FIND='GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 audit=0 nvme_load=yes"'
-	REPLACE='GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 audit=0 nvme_load=yes nvidia-drm.modeset=1"'
-	sudo sed -i 's/$FIND/$REPLACE/g' /etc/default/grub
+		FIND='GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 audit=0 nvme_load=yes"'
+		REPLACE='GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=3 audit=0 nvme_load=yes nvidia-drm.modeset=1"'
+		sudo sed -i 's/$FIND/$REPLACE/g' /etc/default/grub
 
-	FIND="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes'"
-	REPLACE="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes nvidia-drm.modeset=1'"
-	sudo sed -i "s/$FIND/$REPLACE/g" /etc/default/grub
+		FIND="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes'"
+		REPLACE="GRUB_CMDLINE_LINUX_DEFAULT='quiet loglevel=3 audit=0 nvme_load=yes nvidia-drm.modeset=1'"
+		sudo sed -i "s/$FIND/$REPLACE/g" /etc/default/grub
 
-	echo
-	echo "################################################################"
-	echo "################### Mkinitcpio and update-grub"
-	echo "################################################################"
-	echo
+		echo "Check if nvidia-drm.modeset is necessary"
+		/usr/local/bin/arcolinux-nvidia-drm-wayland
 
-	sudo mkinitcpio -P
+		echo
+		echo "################################################################"
+		echo "################### Mkinitcpio and update-grub"
+		echo "################################################################"
+		echo
 
-	sudo grub-mkconfig -o /boot/grub/grub.cfg
+		sudo mkinitcpio -P
 
-	echo
-	tput setaf 6
-	echo "################################################################"
-	echo "################### Done"
-	echo "################################################################"
-	tput sgr0
-	echo
+		sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+		echo
+		tput setaf 6
+		echo "################################################################"
+		echo "################### Done"
+		echo "################################################################"
+		tput sgr0
+		echo
+	else
+		echo "Grub is not installed"
+	fi
+else
+	echo "Nvidia-dkms is not installed"
 fi
