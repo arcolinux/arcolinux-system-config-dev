@@ -74,8 +74,8 @@ tput sgr0;echo "Installed Kernels";tput setaf 9
 echo "----------------------------------------------------"
 i=0
 for kernel in /usr/lib/modules/*; do
-    kernel_version=$(find ${kernel} -iname "vmlinuz" | awk -F'/' '{print $5}')
-    test ! -z "$kernel_version" && i=$((i+1)) && echo "[$i] $kernel_version"
+    kernel_version=$(find ${kernel} -name "vmlinuz" | awk -F'/' '{print $5}')
+    test ! -z "$kernel_version" && test -s "$kernel/vmlinuz" && i=$((i+1)) && echo "[$i] $kernel_version"
 done
 echo "----------------------------------------------------"
 tput sgr0;echo "Active Kernel";tput setaf 9
