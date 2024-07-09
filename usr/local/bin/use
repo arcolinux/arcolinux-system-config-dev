@@ -72,18 +72,15 @@ sed '2d' /bootloader
 echo "----------------------------------------------------"
 tput sgr0;echo "Installed Kernels";tput setaf 9
 echo "----------------------------------------------------"
-#ls /usr/lib/modules#
 i=0
 for kernel in /usr/lib/modules/*; do
-    i=$((i+1))
     kernel_version=$(find ${kernel} -iname "vmlinuz" | awk -F'/' '{print $5}')
-    echo "[$i] $kernel_version"
+    test ! -z "$kernel_version" && i=$((i+1)) && echo "[$i] $kernel_version"
 done
 echo "----------------------------------------------------"
 tput sgr0;echo "Active Kernel";tput setaf 9
 echo "----------------------------------------------------"
-#cat /proc/version
-kernel-install | awk '/Kernel Version:/' | sed 's/Kernel Version://' | xargs
+uname -rs
 echo "----------------------------------------------------"
 tput sgr0;echo "Kernel Parameters";tput setaf 9
 echo "----------------------------------------------------"
