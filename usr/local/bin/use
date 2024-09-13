@@ -70,13 +70,21 @@ tput sgr0;echo "Boot system";tput setaf 9
 echo "----------------------------------------------------"
 sed '2d' /bootloader
 echo "----------------------------------------------------"
-tput sgr0;echo "Kernels";tput setaf 9
+tput sgr0;echo "Installed Kernels";tput setaf 9
 echo "----------------------------------------------------"
-ls /usr/lib/modules
+i=0
+for kernel in /usr/lib/modules/*; do
+    kernel_version=$(find ${kernel} -name "vmlinuz" | awk -F'/' '{print $5}')
+    test ! -z "$kernel_version" && test -s "$kernel/vmlinuz" && i=$((i+1)) && echo "[$i] $kernel_version"
+done
 echo "----------------------------------------------------"
-tput sgr0;echo "Kernel in use";tput setaf 9
+tput sgr0;echo "Active Kernel";tput setaf 9
 echo "----------------------------------------------------"
-cat /proc/version
+uname -rs
+echo "----------------------------------------------------"
+tput sgr0;echo "Kernel Parameters";tput setaf 9
+echo "----------------------------------------------------"
+cat /proc/cmdline
 echo "----------------------------------------------------"
 tput sgr0
 # List of potential display managers
