@@ -83,7 +83,14 @@ if lspci | grep -i nvidia > /dev/null; then
 else
     echo "No NVIDIA card detected"
 fi
-echo "----------------------------------------------------"tput sgr0; echo -n "Nvidia packages installed: "; tput setaf 9; pacman -Q | grep -i nvidia | tr '\n' ' ' || echo -n "No NVIDIA packages are installed."; echo; echo "----------------------------------------------------"
+echo "----------------------------------------------------"
+tput sgr0; echo -n "Nvidia packages installed: "; tput setaf 9
+if pacman -Q | grep -i nvidia > /dev/null; then
+    pacman -Q | grep -i nvidia | tr '\n' ' '
+else
+    echo -n "No NVIDIA packages are installed."
+fi
+echo; echo "----------------------------------------------------"
 tput sgr0; echo -n "Nvidia-drm.modeset=... "; tput setaf 9
 if [ -f /etc/default/grub ]; then
     grep "nvidia-drm.modeset=1" /etc/default/grub || echo "Not found"
