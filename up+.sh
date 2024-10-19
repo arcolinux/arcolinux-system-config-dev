@@ -43,7 +43,7 @@ echo "getting mirrorlist ArchLinux"
 wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/pacman.d/mirrorlist -O $workdir/usr/local/share/arcolinux/pacman.d/mirrorlist
 
 echo "getting default grub file"
-wget https://github.com/arconetpro/arconet-iso/blob/main/archiso/airootfs/etc/default/grub -O $workdir/usr/local/share/arcolinux/grub/grub
+wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/default/grub -O $workdir/usr/local/share/arcolinux/grub/grub
 
 echo "getting latest .bashrc"
 wget https://raw.githubusercontent.com/arcolinux/arcolinux-root/master/etc/skel/.bashrc-latest -O $workdir/usr/local/share/arcolinux/.bashrc
