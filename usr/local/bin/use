@@ -100,4 +100,4 @@ echo "MODULES= nvidia nvidia_modeset nvidia_uvm nvidia_drm"
 echo "in /etc/mkinitcpio.conf and creating new files with sudo mkinitcpio -P"
 echo "https://wiki.archlinux.org/title/NVIDIA#Early_loading"
 echo "###############################################################################"
-
+tput sgr0;
