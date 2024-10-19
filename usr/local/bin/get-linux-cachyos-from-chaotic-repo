@@ -26,63 +26,31 @@
 #tput setaf 8 = light blue
 ##################################################################################################################
 
-echo "###############################################################################"
-echo "Getting latest /etc/pacman.conf"
-echo "###############################################################################"
+sudo cp -v /etc/pacman.conf /etc/pacman.conf.script
 
-Online=0
-file_boolean=0
+sh /usr/local/bin/arcolinux-fix-pacman-conf
+sh /usr/local/bin/toggle-arcolinux-repo
 
-function check_connectivity() {
+# Set the file path
+FILE="/etc/pacman.conf"
 
-    local test_ip
-    local test_count
-
-    test_ip="8.8.8.8"
-    test_count=1
-
-    if ping -c ${test_count} ${test_ip} > /dev/null; then
-       echo "You have internet connectivity"
-       Online=1
-    else
-       echo "You do not have connectivity"
-       Online=0
-    fi
- }
-
-function check_file() {
-
-	file="/usr/local/share/arcolinux/pacman.conf"
-	if [[ -f $file ]];then
-    	echo $file " exists"
-    	file_boolean=1
-	else
-    	echo $file " doesn't exist"
-    	file_boolean=0
-	fi
-}
-
-check_connectivity
-check_file
-
-
-# pacman config + online
-if [ $Online -eq 1 ] ; then
-	echo "getting latest /etc/pacman.conf from github"
-	sudo wget https://raw.githubusercontent.com/arconetpro/arconet-iso/refs/heads/main/archiso/airootfs/etc/pacman.conf -O $workdir/etc/pacman.conf
+# Search for "chaotic-aur" in the specified file
+if ! grep -q "chaotic-aur" "$FILE"; then
+    echo "Adding chaotic-aur repository to $FILE"
+    # Append the configuration for chaotic-aur to the file
+    {
+echo ""
+echo "[chaotic-aur]"
+echo "SigLevel = Required DatabaseOptional"
+echo "Include = /etc/pacman.d/chaotic-mirrorlist"
+    } | sudo tee -a "$FILE"
 fi
 
-# pacman config + not online
-if [ $Online -eq 0 ] && [ $file_boolean -eq 1 ] ; then
-	sudo cp /usr/local/share/arcolinux/pacman.conf /etc/pacman.conf
-	echo "/etc/pacman.conf saved from local system"
-fi
+sudo pacman -Sy linux-cachyos linux-cachyos-headers --noconfirm --needed
 
-#putting old pacman config back
-if [ $Online -eq 0 ]  && [ $file_boolean -eq 0 ] ; then
-	echo "Run this script once you are back online"
-fi
+sudo cp -v /etc/pacman.conf.script /etc/pacman.conf
 
+echo
 echo "###############################################################################"
 echo "###                DONE - YOU CAN CLOSE THIS WINDOW                        ####"
 echo "###############################################################################"
